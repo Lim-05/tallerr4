@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from usuarios.infrastructure.adapters.input.rest.receta_controller import router
+from usuarios.infrastructure.adapters.input.rest.user_controller import router
 
 app = FastAPI()
 app.include_router(router)
