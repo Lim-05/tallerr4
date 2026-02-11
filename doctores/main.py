@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from usuarios.infrastructure.adapters.input.rest.user_controller import router
+from doctores.infrastructure.adapters.input.rest.doctor_controller import router
 
 app = FastAPI()
 app.include_router(router)

@@ -1,41 +1,39 @@
-from datetime import datetime
 from enum import Enum
 from typing import Optional
 from pydantic import BaseModel
 
 
-class UserStatus(str, Enum):
+class PacienteStatus(str, Enum):
     ACTIVE = "active"
     INACTIVE = "inactive"
 
-class User(BaseModel):
-    '''Entidad de dominio: User'''
+class Paciente(BaseModel):
+    '''Entidad de dominio: Paciente'''
     id: str
     username: str
     email: str
-    status: UserStatus = UserStatus.ACTIVE
-    created_at: datetime
+    status: PacienteStatus = PacienteStatus.ACTIVE
 
     def activate(self):
         """Comportamiento de dominio"""
-        self.status = UserStatus.ACTIVE
+        self.status = PacienteStatus.ACTIVE
 
     def deactivate(self):
         """Comportamiento de dominio"""
-        self.status = UserStatus.INACTIVE
+        self.status = PacienteStatus.INACTIVE
 
     def is_active(self) -> bool:
         """Comportamiento de dominio"""
-        return self.status == UserStatus.ACTIVE
+        return self.status == PacienteStatus.ACTIVE
     
-class UserCreate(BaseModel):
-    """DTO para crear usuario"""
+class PacienteCreate(BaseModel):
+    """DTO para crear paciente"""
     username: str
     email: str
 
-class UserUpdate(BaseModel):
-    """DTO para actualizar usuario"""
+'''class PacienteUpdate(BaseModel):
+    """DTO para actualizar paciente"""
     username: Optional[str] = None
     email: Optional[str] = None
-    status: Optional[UserStatus] = None
+    status: Optional[PacienteStatus] = None'''
 
